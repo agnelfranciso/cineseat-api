@@ -176,10 +176,12 @@ python run.py
 
 The service will start at **`http://127.0.0.1:8000`**.  
 
-### 📚 Interactive Documentation
-- **Scalar UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) (or [`/scalar`](http://127.0.0.1:8000/scalar)) — The primary, modern developer-friendly interactive documentation featuring dark mode, multi-language code snippets (Python, cURL, JavaScript, Go), instant search (`Cmd/Ctrl + K`), and interactive request testing.
-- **GitHub Pages Hosted Docs**: `https://agnelfranciso.github.io/cineseat-api/`
-- **Raw OpenAPI 3.1 Spec**: [http://127.0.0.1:8000/openapi.json](http://127.0.0.1:8000/openapi.json)
+### 🌐 Live Cloud Deployment & Interactive Documentation
+- **Live Cloud API Endpoint**: [https://cineseat-api.antideploy.app](https://cineseat-api.antideploy.app)
+- **Live Scalar API Reference**: [https://cineseat-api.antideploy.app/docs](https://cineseat-api.antideploy.app/docs)
+- **Static Docs (GitHub Pages)**: [https://agnelfranciso.github.io/cineseat-api/](https://agnelfranciso.github.io/cineseat-api/)
+- **Live OpenAPI 3.1 Spec**: [https://cineseat-api.antideploy.app/openapi.json](https://cineseat-api.antideploy.app/openapi.json)
+- **Local Scalar UI (Dev)**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
@@ -473,6 +475,22 @@ pytest tests/ -v
 ├── run.py                   # High-performance server bootstrap runner
 └── README.md                # Comprehensive documentation
 ```
+
+---
+
+## 💡 Acknowledgements & Inspiration
+
+This project was inspired by the cinema seating visualization and crowd-booking exploration pioneered by indie developer **Sunith V.S.** (widely known in the Indian tech ecosystem as *truevibecoder*). Observing the real-world demand for transparent seat quality metrics, **CineSeat API** was designed from the ground up as an independent, clean-room, standards-compliant RESTful backend service. It implements first-principles 3D auditorium spatial geometry, SMPTE 196M ($FOV \ge 30^\circ$, optimal $45^\circ$) and THX ($\phi_{\text{neck}} \le 15^\circ$, off-axis $< 15^\circ$) optical metrics, and typed OpenAPI 3.1 specifications.
+
+> **Disclaimer**: CineSeat API is an independent open-source educational project. It is not affiliated with, maintained by, or endorsed by Sunith V.S., BookMyShow, or District.
+
+---
+
+## 🚦 Rate Limiting & Demo Guard
+
+- **GitHub & Self-Hosted**: The codebase is **unrestricted with 0 artificial limits**. Self-hosted deployments and Docker runs have no rate limiting by default.
+- **Hosted Public Demo**: The live hosted demo has an optional rate limiter (`LIVE_DEMO_MODE=true`, 60 req/min per IP) to prevent automated third-party commercial scraping while allowing interactive web testing via Scalar.
+- **Documentation & Health**: The interactive Scalar reference (`/docs`) and health probes (`/health`) are always exempt from rate limiting.
 
 ---
 
