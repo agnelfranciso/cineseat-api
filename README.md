@@ -1,11 +1,16 @@
 # CineSeat API 🍿📐
 
+[![Live Demo](https://img.shields.io/badge/Live%20API-cineseat--api.antideploy.app-6366f1?style=for-the-badge&logo=fastapi&logoColor=white)](https://cineseat-api.antideploy.app)
+[![Interactive Docs](https://img.shields.io/badge/Scalar%20Docs-Interactive%20Reference-8b5cf6?style=for-the-badge&logo=swagger&logoColor=white)](https://cineseat-api.antideploy.app/docs)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python)](https://www.python.org/)
-[![Framework](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Pydantic](https://img.shields.io/badge/Pydantic-v2.9+-E92063?logo=pydantic&logoColor=white)](https://docs.pydantic.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 [![Standards](https://img.shields.io/badge/Standard-SMPTE%20196M%20%7C%20THX-FF9900)](https://www.thx.com/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
+
+> 🚀 **Live Interactive Documentation**: [https://cineseat-api.antideploy.app/docs](https://cineseat-api.antideploy.app/docs)  
+> 🌐 **Live Base API**: [https://cineseat-api.antideploy.app](https://cineseat-api.antideploy.app)  
+> 📦 **GitHub Repository**: [https://github.com/agnelfranciso/cineseat-api](https://github.com/agnelfranciso/cineseat-api)
+
+---
 
 > **High-Performance Cinema Intelligence & 3D Seating Geometry Engine**  
 > Real-time movie showtimes, complete Indian cinema directory (2,167+ cities), and proprietary 3D auditorium seat quality scoring compliant with **SMPTE 196M** and **THX** optical viewing standards.
@@ -177,11 +182,11 @@ python run.py
 The service will start at **`http://127.0.0.1:8000`**.  
 
 ### 🌐 Live Cloud Deployment & Interactive Documentation
+- **Interactive Scalar API Docs**: [https://cineseat-api.antideploy.app/docs](https://cineseat-api.antideploy.app/docs)
 - **Live Cloud API Endpoint**: [https://cineseat-api.antideploy.app](https://cineseat-api.antideploy.app)
-- **Live Scalar API Reference**: [https://cineseat-api.antideploy.app/docs](https://cineseat-api.antideploy.app/docs)
-- **Static Docs (GitHub Pages)**: [https://agnelfranciso.github.io/cineseat-api/](https://agnelfranciso.github.io/cineseat-api/)
-- **Live OpenAPI 3.1 Spec**: [https://cineseat-api.antideploy.app/openapi.json](https://cineseat-api.antideploy.app/openapi.json)
-- **Local Scalar UI (Dev)**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **Live OpenAPI 3.1 Specification**: [https://cineseat-api.antideploy.app/openapi.json](https://cineseat-api.antideploy.app/openapi.json)
+- **Health & Readiness Check**: [https://cineseat-api.antideploy.app/health](https://cineseat-api.antideploy.app/health)
+- **Local Dev Scalar UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
