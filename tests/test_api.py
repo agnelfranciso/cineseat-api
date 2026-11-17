@@ -151,5 +151,10 @@ class TestCineSeatAPI(unittest.TestCase):
         data = response.json()
         self.assertTrue(data["success"])
 
+    def test_14_rate_limiting_behavior(self):
+        # GitHub and local environments have no rate limits by default
+        response = self.client.get("/api/v1/cities?limit=1")
+        self.assertEqual(response.status_code, 200)
+
 if __name__ == "__main__":
     unittest.main()

@@ -476,6 +476,22 @@ pytest tests/ -v
 
 ---
 
+## 💡 Acknowledgements & Inspiration
+
+This project was inspired by the cinema seating visualization and crowd-booking exploration pioneered by indie developer **Sunith V.S.** (widely known in the Indian tech ecosystem as *truevibecoder*). Observing the real-world demand for transparent seat quality metrics, **CineSeat API** was designed from the ground up as an independent, clean-room, standards-compliant RESTful backend service. It implements first-principles 3D auditorium spatial geometry, SMPTE 196M ($FOV \ge 30^\circ$, optimal $45^\circ$) and THX ($\phi_{\text{neck}} \le 15^\circ$, off-axis $< 15^\circ$) optical metrics, and typed OpenAPI 3.1 specifications.
+
+> **Disclaimer**: CineSeat API is an independent open-source educational project. It is not affiliated with, maintained by, or endorsed by Sunith V.S., BookMyShow, or District.
+
+---
+
+## 🚦 Rate Limiting & Demo Guard
+
+- **GitHub & Self-Hosted**: The codebase is **unrestricted with 0 artificial limits**. Self-hosted deployments and Docker runs have no rate limiting by default.
+- **Hosted Public Demo**: The live hosted demo has an optional rate limiter (`LIVE_DEMO_MODE=true`, 60 req/min per IP) to prevent automated third-party commercial scraping while allowing interactive web testing via Scalar.
+- **Documentation & Health**: The interactive Scalar reference (`/docs`) and health probes (`/health`) are always exempt from rate limiting.
+
+---
+
 ## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE.md](LICENSE.md) file for full legal terms and disclaimers.

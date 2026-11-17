@@ -1,1 +1,1 @@
-# seats.movie Backend Package
+# CineSeat API Engine Package

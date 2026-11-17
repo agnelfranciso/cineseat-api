@@ -293,7 +293,7 @@ def get_venues_for_city(city_slug: str) -> Dict[str, Any]:
 def get_showtimes(event_code: str, city_slug: str, date: str = "today") -> Dict[str, Any]:
     """
     Extracts full showtimes, venues, ticket prices, formats, and live remaining seat counts.
-    Returns the exact schema expected by the seats.movie Nuxt frontend.
+    Extracts and formats live showtimes, screen metadata, and pricing from upstream providers.
     """
     clean_code = re.sub(r'^[A-Za-z]+', '', event_code)
     url = f"https://www.district.in/movies/m-movie-tickets-in-{city_slug}-MV{clean_code or '233181'}"

@@ -29,6 +29,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+antideploy_device.json
+.antideploy/
 
 # Testing & Coverage
 .pytest_cache/

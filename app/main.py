@@ -1,10 +1,13 @@
 from fastapi import FastAPI, Query, Path, HTTPException, Request, status
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional, List, Dict, Any
+import os
 import datetime
 import math
 import uuid
+import time
+from collections import defaultdict
 from scalar_fastapi import get_scalar_api_reference, Theme
 
 from app import extractor
@@ -168,6 +171,51 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Rate Limiting:
+# By default, the GitHub repo and self-hosted instances have NO RATE LIMITS.
+# Rate limiting is ONLY active if LIVE_DEMO_MODE=true or RATE_LIMIT_ENABLED=true in the environment.
+RATE_LIMIT_ENABLED = os.getenv("LIVE_DEMO_MODE", os.getenv("RATE_LIMIT_ENABLED", "false")).lower() in ("true", "1", "yes")
+RATE_LIMIT_WINDOW = 60.0
+RATE_LIMIT_MAX_REQUESTS = int(os.getenv("RATE_LIMIT_MAX_REQUESTS", "60"))
+_request_timestamps: Dict[str, List[float]] = defaultdict(list)
+
+@app.middleware("http")
+async def rate_limit_middleware(request: Request, call_next):
+    if not RATE_LIMIT_ENABLED:
+        return await call_next(request)
+
+    client_ip = request.client.host if request.client else "127.0.0.1"
+    path = request.url.path
+
+    # Whitelist documentation, health check, and schema
+    if path in ["/", "/docs", "/scalar", "/openapi.json", "/health", "/favicon.ico"]:
+        return await call_next(request)
+
+    now = time.time()
+    valid_times = [t for t in _request_timestamps[client_ip] if now - t < RATE_LIMIT_WINDOW]
+    if len(valid_times) >= RATE_LIMIT_MAX_REQUESTS:
+        retry_after = int(RATE_LIMIT_WINDOW - (now - valid_times[0])) + 1
+        return JSONResponse(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            content={
+                "error": "rate_limit_exceeded",
+                "message": f"Live demo rate limit reached ({RATE_LIMIT_MAX_REQUESTS} req/min). Please slow down.",
+                "retry_after_seconds": retry_after
+            },
+            headers={
+                "Retry-After": str(retry_after),
+                "X-RateLimit-Limit": str(RATE_LIMIT_MAX_REQUESTS),
+                "X-RateLimit-Remaining": "0"
+            }
+        )
+
+    valid_times.append(now)
+    _request_timestamps[client_ip] = valid_times
+    response = await call_next(request)
+    response.headers["X-RateLimit-Limit"] = str(RATE_LIMIT_MAX_REQUESTS)
+    response.headers["X-RateLimit-Remaining"] = str(RATE_LIMIT_MAX_REQUESTS - len(valid_times))
+    return response
 
 def utc_now_iso() -> str:
     return datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z")
