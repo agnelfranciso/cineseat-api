@@ -20,6 +20,7 @@
 ## 📑 Table of Contents
 
 - [Overview](#-overview)
+- [Inspiration & Background](#-inspiration--background)
 - [Key Features](#-key-features)
 - [Mathematical Seat Scoring Engine](#-mathematical-seat-scoring-engine)
 - [System Architecture](#-system-architecture)
@@ -47,6 +48,20 @@
 - Which specific cluster of $N$ contiguous seats provides the reference viewing angle for a group.
 
 CineSeat models the physical 3D auditorium geometry (screen dimensions, eye-level heights, stadium tier rises, seat coordinates) and calculates optical viewing metrics according to global cinematic industry guidelines.
+
+---
+
+## 💡 Inspiration & Background
+
+The concept for CineSeat API was inspired after discovering **seats.movie**, created by developer **Sunith V S** (@sunithvs), who demonstrated how valuable 3D auditorium previews can be for moviegoers. 
+
+While that project showcased the consumer side of the problem, it highlighted a major void in the developer ecosystem: **there was no open, developer-accessible public solution for this.** 
+
+Whenever engineers build movie dashboards, showtime aggregators, or indie ticket-booking platforms, they face two fundamental challenges:
+1. **Accurate Pan-India Cinema Listings**: Getting structured, real-time cinema and showtimes metadata across Indian cities.
+2. **Empirical Seat Evaluation**: Mathematically determining which seats provide genuine optical comfort rather than leaving users to guess from a flat 2D map.
+
+CineSeat API was built from the ground up as an independent, open-source RESTful platform to solve this exact dilemma—empowering any developer to integrate pan-India showtimes intelligence and 3D spatial seat recommendations directly into their apps.
 
 ---
 
